@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Offers View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="VodafoneTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="OffersViewController" customModule="VodafoneTest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OfferCell" rowHeight="120" id="rtf-KG-xeq">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OfferCell" rowHeight="120" id="rtf-KG-xeq" customClass="OfferCell" customModule="VodafoneTest" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="390" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rtf-KG-xeq" id="Gsp-v0-GsR">
@@ -74,6 +74,12 @@
                                                 <constraint firstAttribute="bottom" secondItem="ciu-Q5-aDY" secondAttribute="bottom" constant="16" id="N3t-eB-BDV"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="cardView" destination="ciu-Q5-aDY" id="pcu-DY-3PA"/>
+                                            <outlet property="offerDescription" destination="2Y6-CF-Q2E" id="4Gi-pj-V6O"/>
+                                            <outlet property="offerTitle" destination="W9v-jg-XW2" id="0h7-kW-4V8"/>
+                                            <outlet property="redArrowImage" destination="pnG-KY-re7" id="vif-dm-7gY"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -89,7 +95,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="Bgh-Te-KoX"/>
                     <connections>
-                        <segue destination="HLa-Lx-bP1" kind="show" id="y2i-jN-3ix"/>
+                        <outlet property="tblOffers" destination="IQ0-RN-c5L" id="vg6-QH-zm1"/>
+                        <segue destination="HLa-Lx-bP1" kind="show" identifier="navToDetail" id="y2i-jN-3ix"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
