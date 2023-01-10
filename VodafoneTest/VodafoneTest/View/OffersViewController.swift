@@ -11,15 +11,6 @@ class OffersViewController: UIViewController {
 
     @IBOutlet weak var tblOffers: UITableView!
     
-    var offers: [Offer] = [
-        Offer(id: "1", rank: 1, isSpecial: true, name: "100MB", shortDescription: "rovid 100 MB adat"),
-        Offer(id: "2", rank: 2, isSpecial: true, name: "300MB", shortDescription: "gyors 300MB adat very nice"),
-        Offer(id: "3", rank: 3, isSpecial: false, name: "400MB", shortDescription: "gyors 400MB internet ami szélsebesen szárnyal az internet mély bugyraiban, kellemesen használható télen nyáron"),
-        Offer(id: "4", rank: 4, isSpecial: false, name: "500MB", shortDescription: "verygyors 500MB"),
-        Offer(id: "5", rank: 21, isSpecial: true, name: "1GB", shortDescription: "ubergyors internet"),
-        Offer(id: "6", rank: 22, isSpecial: false, name: "2GB", shortDescription: "uberultragyorsnet")
-    ]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(named: "cellBackground")
@@ -60,13 +51,14 @@ class OffersViewController: UIViewController {
 extension OffersViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return offers.count
+        return sections[section].cells.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: OfferCell.reuseIdentifier, for: indexPath) as! OfferCell
 
-        let currentOffer = offers[indexPath.row]
+//        let currentOffer = offers[indexPath.row]
+        let currentOffer = sections[indexPath.section].cells[indexPath.row]
         
         cell.configureWith(currentOffer)
 
