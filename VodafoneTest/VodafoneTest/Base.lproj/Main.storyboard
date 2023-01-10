@@ -50,10 +50,10 @@
             </objects>
             <point key="canvasLocation" x="986.15384615384608" y="-2.1327014218009479"/>
         </scene>
-        <!--View Controller-->
+        <!--Details View Controller-->
         <scene sceneID="FG3-gI-YLo">
             <objects>
-                <viewController id="HLa-Lx-bP1" sceneMemberID="viewController">
+                <viewController id="HLa-Lx-bP1" customClass="DetailsViewController" customModule="VodafoneTest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gRh-fZ-cfz">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -93,6 +93,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="i9k-s3-37J"/>
+                    <connections>
+                        <outlet property="bodyLabel" destination="yRK-MI-4jf" id="RSp-dV-gt6"/>
+                        <outlet property="subtitleLabel" destination="kIv-D5-7Hn" id="cO4-H9-b6G"/>
+                        <outlet property="titleLabel" destination="hSO-e1-GdB" id="FxE-jD-qrp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MqI-5y-fzF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
