@@ -53,7 +53,7 @@
         <!--Details View Controller-->
         <scene sceneID="FG3-gI-YLo">
             <objects>
-                <viewController id="HLa-Lx-bP1" customClass="DetailsViewController" customModule="VodafoneTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailsViewController" id="HLa-Lx-bP1" customClass="DetailsViewController" customModule="VodafoneTest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gRh-fZ-cfz">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
