@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14022A41297063EF00F3E58C /* OffersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14022A40297063EF00F3E58C /* OffersService.swift */; };
 		143C4203296D775000B4B51A /* Offer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143C4202296D775000B4B51A /* Offer.swift */; };
 		143C4205296D777B00B4B51A /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143C4204296D777B00B4B51A /* Detail.swift */; };
 		143C4207296D77E900B4B51A /* Offers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143C4206296D77E900B4B51A /* Offers.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		14022A40297063EF00F3E58C /* OffersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffersService.swift; sourceTree = "<group>"; };
 		143C4202296D775000B4B51A /* Offer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offer.swift; sourceTree = "<group>"; };
 		143C4204296D777B00B4B51A /* Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.swift; sourceTree = "<group>"; };
 		143C4206296D77E900B4B51A /* Offers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offers.swift; sourceTree = "<group>"; };
@@ -54,12 +56,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		14022A3F297063D000F3E58C /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				14022A40297063EF00F3E58C /* OffersService.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		143C4201296D774000B4B51A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				143C4206296D77E900B4B51A /* Offers.swift */,
+				14022A3F297063D000F3E58C /* Network */,
 				143C4202296D775000B4B51A /* Offer.swift */,
 				143C4204296D777B00B4B51A /* Detail.swift */,
-				143C4206296D77E900B4B51A /* Offers.swift */,
 				14E57A3B296D8B3200F1216B /* Section.swift */,
 			);
 			path = Model;
@@ -122,7 +133,6 @@
 				8FD3D1EE386DCC8F56A6F587 /* Pods-VodafoneTest.debug.xcconfig */,
 				D89388B883355C3940D831D0 /* Pods-VodafoneTest.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -241,6 +251,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14022A41297063EF00F3E58C /* OffersService.swift in Sources */,
 				14E57A3C296D8B3200F1216B /* Section.swift in Sources */,
 				14E57A3A296D896700F1216B /* OfferCell.swift in Sources */,
 				146D9EED2968B87C00AF574D /* OffersViewController.swift in Sources */,

@@ -8,7 +8,7 @@
 import Foundation
 
 struct Offers: Codable {
-    var offers: [Offer]
+    var record: Record
     
     static let mockData: [Offer] = [
         Offer(id: "1", rank: 1, isSpecial: true, name: "100MB", shortDescription: "rovid 100 MB adat"),
@@ -18,4 +18,8 @@ struct Offers: Codable {
         Offer(id: "5", rank: 21, isSpecial: true, name: "1GB", shortDescription: "ubergyors internet"),
         Offer(id: "6", rank: 22, isSpecial: false, name: "2GB", shortDescription: "uberultragyorsnet")
     ]
+}
+
+struct Record: Codable {
+    var offers: [Offer]
 }
