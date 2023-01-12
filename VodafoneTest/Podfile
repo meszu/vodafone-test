@@ -1,0 +1,10 @@
+platform :ios, '12.0'
+
+target 'VodafoneTest' do
+  use_frameworks!
+
+  # Pods for VodafoneTest
+
+  pod 'Moya', '~> 15.0'
+
+end
