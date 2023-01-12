@@ -5,14 +5,20 @@
 //  Created by Mészáros Kristóf on 2023. 01. 06..
 //
 
+import Moya
 import UIKit
 
 class OffersViewController: UIViewController {
+    let provider = MoyaProvider<OffersService>()
+    
+    var sections: [Section] = []
 
     @IBOutlet weak var tblOffers: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        fetchData()
         
         tblOffers.delegate = self
         tblOffers.dataSource = self
@@ -30,15 +36,47 @@ class OffersViewController: UIViewController {
         navigationItem.backBarButtonItem = UIBarButtonItem(
             title: "Back", style: .plain, target: nil, action: nil)
     }
+}
 
-    var sections: [Section] = [
-        Section(title: "Special Offers",
-                cells: Offers.mockData
-               ),
-        Section(title: "Offers",
-                cells: Offers.mockData.reversed()
-               )]
+// MARK: - Networking
 
+extension OffersViewController {
+    private func fetchData() {
+        provider.request(.offers) { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let response):
+                do {
+           //         print(try response.mapJSON())
+                    let allOffers = try response.map(Offers.self).record.offers
+                    let specOffs = allOffers.filter { $0.isSpecial }
+                    let normOffs = allOffers.filter { !$0.isSpecial }
+                    
+                    if !specOffs.isEmpty {
+                        self.sections.append(Section(title: "Special Offers", cells: specOffs))
+                    }
+                    if !normOffs.isEmpty {
+                        self.sections.append(Section(title: "Offers", cells: normOffs))
+                    }
+                    
+                    self.tblOffers.reloadData()
+                } catch {
+                    self.presentError(title: "Uh Oh", message: "Something went wrong while parsing the data. Try again later.")
+                }
+            case .failure:
+                self.presentError(title: "Sorry", message: "Failed to download the offer list.")
+            }
+        }
+    }
+    
+    func presentError(title: String, message: String) {
+      let alert = UIAlertController(title: title, message: message,
+                                    preferredStyle: .alert)
+      alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+
+      present(alert, animated: true, completion: nil)
+    }
 }
 
 // MARK: - UITableView Delegate & Data Source

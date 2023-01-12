@@ -67,8 +67,8 @@
 		143C4201296D774000B4B51A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				143C4206296D77E900B4B51A /* Offers.swift */,
 				14022A3F297063D000F3E58C /* Network */,
+				143C4206296D77E900B4B51A /* Offers.swift */,
 				143C4202296D775000B4B51A /* Offer.swift */,
 				143C4204296D777B00B4B51A /* Detail.swift */,
 				14E57A3B296D8B3200F1216B /* Section.swift */,
