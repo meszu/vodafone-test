@@ -13,7 +13,6 @@ class OffersViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(named: "cellBackground")
         
         tblOffers.delegate = self
         tblOffers.dataSource = self
@@ -22,11 +21,7 @@ class OffersViewController: UIViewController {
         tblOffers.estimatedRowHeight = 140
         tblOffers.backgroundColor = UIColor(named: "cellBackground")
         
-        tblOffers.tableHeaderView = .init(frame: .init(x: 0, y: 0, width: 0, height: CGFloat.leastNonzeroMagnitude))
-        
         navigationController?.navigationBar.barTintColor = UIColor.white
-        
-        
                 
         title = "Offers"
         
@@ -82,9 +77,15 @@ extension OffersViewController: UITableViewDelegate, UITableViewDataSource {
         let sectionHeaderLabel = UILabel()
         sectionHeaderLabel.text = sections[section].title
         sectionHeaderLabel.font = UIFont.systemFont(ofSize: 24, weight: .bold)
-        sectionHeaderLabel.frame = CGRect(x: 16, y: 8, width: 250, height: 35)
+        sectionHeaderLabel.frame = CGRect(x: 16, y: 0, width: 250, height: 35)
         
         sectionHeaderLabelView.addSubview(sectionHeaderLabel)
+        
+        sectionHeaderLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            sectionHeaderLabel.centerYAnchor.constraint(equalTo: sectionHeaderLabelView.centerYAnchor, constant: -8),
+            sectionHeaderLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: sectionHeaderLabelView.leadingAnchor, multiplier: 2)
+        ])
         
         return sectionHeaderLabelView
     }
