@@ -8,7 +8,7 @@
 import Foundation
 
 struct Offer: Codable {
-    var id: String
+    var id: String?
     var rank: Int?
     var isSpecial: Bool
     var name: String?

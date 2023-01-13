@@ -72,13 +72,23 @@ extension OffersViewController {
             switch result {
             case .success(let response):
                 do {
-                    let allOffers = try response.map(Offers.self).record.offers.filter { $0.rank != nil && !$0.id.isEmpty }
+                    /* Parse the JSON file, exclude offers where "id" or "rank" parameter is nil. */
+                    let allOffers = try response.map(Offers.self).record.offers.filter { $0.rank != nil && $0.id != nil }
+                    
+                    /* Filter all offers based on wheter they are special offers or normal offers. */
                     let specOffs = allOffers.filter { $0.isSpecial }
                     let normOffs = allOffers.filter { !$0.isSpecial }
                     
+                    /* If special offers array is not empty, create a Section with a title of "Special Offers", and populate the cells with the
+                       special offers array.
+                     */
                     if !specOffs.isEmpty {
                         self.sections.append(Section(title: "Special Offers", cells: specOffs))
                     }
+                    
+                    /* If normal offers array is not empty, create a Section with a title of "Offers", and populate the cells with the
+                       special offers array.
+                     */
                     if !normOffs.isEmpty {
                         self.sections.append(Section(title: "Offers", cells: normOffs))
                     }
@@ -113,7 +123,6 @@ extension OffersViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: OfferCell.reuseIdentifier, for: indexPath) as! OfferCell
 
-//        let currentOffer = offers[indexPath.row]
         let currentOffer = sections[indexPath.section].cells[indexPath.row]
         
         cell.configureWith(currentOffer)
