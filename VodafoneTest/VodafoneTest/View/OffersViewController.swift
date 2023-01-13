@@ -73,7 +73,7 @@ extension OffersViewController {
             case .success(let response):
                 do {
                     /* Parse the JSON file, exclude offers where "id" or "rank" parameter is nil. */
-                    let allOffers = try response.map(Offers.self).record.offers.filter { $0.rank != nil && $0.id != nil }
+                    let allOffers = try response.map(Offers.self).record.offers.filter { $0.rank != nil && $0.rank != 0 && $0.id != nil && $0.id != "" }
                     
                     /* Filter all offers based on wheter they are special offers or normal offers. */
                     let specOffs = allOffers.filter { $0.isSpecial }
