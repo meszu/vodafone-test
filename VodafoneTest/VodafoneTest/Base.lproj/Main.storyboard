@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="IQ0-RN-c5L">
-                                <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                                <rect key="frame" x="0.0" y="91" width="390" height="753"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OfferCell" rowHeight="120" id="rtf-KG-xeq" customClass="OfferCell" customModule="VodafoneTest" customModuleProvider="target">
@@ -90,7 +90,7 @@
                             <constraint firstItem="IQ0-RN-c5L" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="8ta-AH-PEq"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IQ0-RN-c5L" secondAttribute="trailing" id="T4A-30-cT6"/>
                             <constraint firstAttribute="bottom" secondItem="IQ0-RN-c5L" secondAttribute="bottom" id="mbC-tR-sWy"/>
-                            <constraint firstItem="IQ0-RN-c5L" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="rN5-7K-N63"/>
+                            <constraint firstItem="IQ0-RN-c5L" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="rN5-7K-N63"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Bgh-Te-KoX"/>
