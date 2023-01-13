@@ -9,16 +9,18 @@ import Moya
 import UIKit
 
 class OffersViewController: UIViewController {
+    @IBOutlet weak var tblOffers: UITableView!
+    
     let provider = MoyaProvider<OffersService>()
+    var refreshControl = UIRefreshControl()
     
     var sections: [Section] = []
-
-    @IBOutlet weak var tblOffers: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         fetchData()
+        setupRefreshControl()
         
         tblOffers.delegate = self
         tblOffers.dataSource = self
@@ -38,6 +40,28 @@ class OffersViewController: UIViewController {
     }
 }
 
+// MARK: - Pull to Refresh
+
+extension OffersViewController {
+    private func setupRefreshControl() {
+        refreshControl.tintColor = UIColor(named: "cellBackground")
+        refreshControl.addTarget(self, action: #selector(refreshContent), for: .valueChanged)
+        tblOffers.refreshControl = refreshControl
+    }
+    
+    @objc func refreshContent() {
+//        setupSkeletons()
+        reset()
+        tblOffers.reloadData()
+        fetchData()
+        tblOffers.refreshControl?.endRefreshing()
+    }
+    
+    @objc func reset() {
+        sections = []
+    }
+}
+
 // MARK: - Networking
 
 extension OffersViewController {
@@ -48,7 +72,6 @@ extension OffersViewController {
             switch result {
             case .success(let response):
                 do {
-           //         print(try response.mapJSON())
                     let allOffers = try response.map(Offers.self).record.offers
                     let specOffs = allOffers.filter { $0.isSpecial }
                     let normOffs = allOffers.filter { !$0.isSpecial }
