@@ -72,7 +72,7 @@ extension OffersViewController {
             switch result {
             case .success(let response):
                 do {
-                    let allOffers = try response.map(Offers.self).record.offers
+                    let allOffers = try response.map(Offers.self).record.offers.filter { $0.rank != nil && !$0.id.isEmpty }
                     let specOffs = allOffers.filter { $0.isSpecial }
                     let normOffs = allOffers.filter { !$0.isSpecial }
                     
