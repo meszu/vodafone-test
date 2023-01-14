@@ -29,14 +29,11 @@ class OffersViewController: UIViewController {
         tblOffers.estimatedRowHeight = 140
         tblOffers.backgroundColor = UIColor(named: "cellBackground")
         
-        navigationController?.navigationBar.barTintColor = UIColor.white
-                
         title = "Offers"
-        
-        /* Set the DetailView's back button's title to "Back" */
-        
-        navigationItem.backBarButtonItem = UIBarButtonItem(
-            title: "Back", style: .plain, target: nil, action: nil)
+                
+        navigationController?.navigationBar.barTintColor = UIColor.white
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem?.tintColor = UIColor(named: "backButtonColor")
     }
 }
 
