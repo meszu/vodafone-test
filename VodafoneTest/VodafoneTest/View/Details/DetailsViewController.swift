@@ -5,9 +5,12 @@
 //  Created by Mészáros Kristóf on 2023. 01. 10..
 //
 
+import Moya
 import UIKit
 
 class DetailsViewController: UIViewController {
+    
+    private let provider = MoyaProvider<DetailsService>()
     
     var offerDetail: Detail = Detail(id: "0", name: "Sample", shortDescription: "Sample", description: "Sample")
     var receivedOffer: Offer?
@@ -51,6 +54,44 @@ extension DetailsViewController: UITableViewDelegate, UITableViewDataSource {
 
         return cell
     }
+}
+
+// MARK: Network and Refresh Control
+
+extension DetailsViewController {
+    private func fetchData() {
+        provider.request(.details) { result in
+            switch result {
+            case .success(let response):
+                do {
+//                    print(try response.mapJSON())
+                    let details = try response.map(DetailRecord.self).record
+                    if details.id == self.receivedOffer?.id {
+                        self.offerDetail = Detail(
+                            id: details.id,
+                            name: details.name,
+                            shortDescription: details.shortDescription,
+                            description: details.description)
+                    } else {
+                        self.offerDetail = Detail(id: "", name: "", shortDescription: "", description: "")
+                    }
+                    self.tblDetails.reloadData()
+                } catch {
+                    self.presentError(with: "Something went wrong. Try again later.")
+                }
+            case .failure(let error):
+                print("Failed to download the offers list with error: \(error.localizedDescription)")
+                self.presentError(with: "Failed to download the offer list.")
+            }
+        }
+    }
     
-    
+    func presentError(with message: String) {
+      let alert = UIAlertController(title: "Uh oh", message: message,
+                                    preferredStyle: .alert)
+      alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+
+      present(alert, animated: true, completion: nil)
+    }
+
 }
