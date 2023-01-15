@@ -28,11 +28,11 @@ class DetailsViewController: UIViewController {
 }
 
 extension DetailsViewController {
-    static func instantiate(offerDetail: Detail) -> DetailsViewController {
+    static func instantiate(offerDetail: Detail, receivedOffer: Offer) -> DetailsViewController {
       guard let vc = UIStoryboard(name: "Main", bundle: nil)
         .instantiateViewController(withIdentifier: "DetailsViewController") as? DetailsViewController else { fatalError("Unexpectedly failed getting DetailViewController from Storyboard") }
 
-      vc.offerDetail = offerDetail
+        vc.offerDetail = offerDetail
 
       return vc
     }

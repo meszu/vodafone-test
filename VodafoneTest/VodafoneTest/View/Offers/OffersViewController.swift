@@ -12,8 +12,12 @@ class OffersViewController: UIViewController {
     @IBOutlet weak var tblOffers: UITableView!
     
     let provider = MoyaProvider<OffersService>()
+    let detailProvider = MoyaProvider<DetailsService>()
+    
     var refreshControl = UIRefreshControl()
     
+    var detailsToPresent: Detail?
+
     var sections: [Section] = []
     
     override func viewDidLoad() {
@@ -168,5 +172,4 @@ extension OffersViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView()
     }
-    
 }
