@@ -18,6 +18,7 @@
 		146D9EF22968B87D00AF574D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 146D9EF12968B87D00AF574D /* Assets.xcassets */; };
 		146D9EF52968B87D00AF574D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 146D9EF32968B87D00AF574D /* LaunchScreen.storyboard */; };
 		14B1B770296D75E200642E5C /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B1B76F296D75E200642E5C /* DetailsViewController.swift */; };
+		14DDC4082974722500C8E69B /* DetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DDC4072974722500C8E69B /* DetailCell.swift */; };
 		14E57A3A296D896700F1216B /* OfferCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E57A39296D896700F1216B /* OfferCell.swift */; };
 		14E57A3C296D8B3200F1216B /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E57A3B296D8B3200F1216B /* Section.swift */; };
 		4FADA0B7701C2EB1E2A68C0F /* Pods_VodafoneTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0CA29CBF3365E7EEC35259E /* Pods_VodafoneTest.framework */; };
@@ -37,6 +38,7 @@
 		146D9EF42968B87D00AF574D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		146D9EF62968B87D00AF574D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14B1B76F296D75E200642E5C /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		14DDC4072974722500C8E69B /* DetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCell.swift; sourceTree = "<group>"; };
 		14E57A39296D896700F1216B /* OfferCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferCell.swift; sourceTree = "<group>"; };
 		14E57A3B296D8B3200F1216B /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		8FD3D1EE386DCC8F56A6F587 /* Pods-VodafoneTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VodafoneTest.debug.xcconfig"; path = "Target Support Files/Pods-VodafoneTest/Pods-VodafoneTest.debug.xcconfig"; sourceTree = "<group>"; };
@@ -79,9 +81,8 @@
 		143C4208296D7E4400B4B51A /* View */ = {
 			isa = PBXGroup;
 			children = (
-				146D9EEC2968B87C00AF574D /* OffersViewController.swift */,
-				14B1B76F296D75E200642E5C /* DetailsViewController.swift */,
-				14E57A39296D896700F1216B /* OfferCell.swift */,
+				14DDC405297471F700C8E69B /* Offers */,
+				14DDC4062974720900C8E69B /* Details */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -117,6 +118,24 @@
 				146D9EF62968B87D00AF574D /* Info.plist */,
 			);
 			path = VodafoneTest;
+			sourceTree = "<group>";
+		};
+		14DDC405297471F700C8E69B /* Offers */ = {
+			isa = PBXGroup;
+			children = (
+				146D9EEC2968B87C00AF574D /* OffersViewController.swift */,
+				14E57A39296D896700F1216B /* OfferCell.swift */,
+			);
+			path = Offers;
+			sourceTree = "<group>";
+		};
+		14DDC4062974720900C8E69B /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				14B1B76F296D75E200642E5C /* DetailsViewController.swift */,
+				14DDC4072974722500C8E69B /* DetailCell.swift */,
+			);
+			path = Details;
 			sourceTree = "<group>";
 		};
 		24CC8E3551A2A6469907AB37 /* Frameworks */ = {
@@ -252,6 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				14022A41297063EF00F3E58C /* OffersService.swift in Sources */,
+				14DDC4082974722500C8E69B /* DetailCell.swift in Sources */,
 				14E57A3C296D8B3200F1216B /* Section.swift in Sources */,
 				14E57A3A296D896700F1216B /* OfferCell.swift in Sources */,
 				146D9EED2968B87C00AF574D /* OffersViewController.swift in Sources */,

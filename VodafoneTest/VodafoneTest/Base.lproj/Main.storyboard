@@ -111,17 +111,67 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="hjy-9Q-HD7">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="hjy-9Q-HD7">
                                 <rect key="frame" x="0.0" y="91" width="390" height="753"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Gy8-a8-uOF">
-                                        <rect key="frame" x="0.0" y="50" width="390" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DetailCell" rowHeight="200" id="Gy8-a8-uOF" customClass="DetailCell" customModule="VodafoneTest" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="55.333332061767578" width="390" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Gy8-a8-uOF" id="zzh-hB-9vv">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hcm-AJ-vUL">
+                                                    <rect key="frame" x="0.0" y="0.0" width="390" height="200"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="One time 1 GB" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1OX-OD-bF4">
+                                                            <rect key="frame" x="16" y="16" width="156" height="27.666666666666671"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let's choose between our data packages." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o0G-ra-gFu">
+                                                            <rect key="frame" x="16" y="51.666666666666664" width="301.66666666666669" height="19.333333333333336"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yfs-4W-aoL">
+                                                            <rect key="frame" x="16" y="87" width="358" height="57.333333333333343"/>
+                                                            <string key="text">1GB 30 day once off prepaid data bundle. This option is ideal if you don’t exceed your bundle often and want to take advantage of the lower in-bundle rates. You can buy as many once-off bundles as you wish.</string>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstItem="yfs-4W-aoL" firstAttribute="leading" secondItem="Hcm-AJ-vUL" secondAttribute="leading" constant="16" id="5er-iD-4he"/>
+                                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="o0G-ra-gFu" secondAttribute="trailing" constant="16" id="MJ3-l4-tsj"/>
+                                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="1OX-OD-bF4" secondAttribute="trailing" constant="16" id="TVg-Ko-3OG"/>
+                                                        <constraint firstItem="yfs-4W-aoL" firstAttribute="top" secondItem="o0G-ra-gFu" secondAttribute="bottom" constant="16" id="V90-Qs-3FS"/>
+                                                        <constraint firstItem="o0G-ra-gFu" firstAttribute="top" secondItem="1OX-OD-bF4" secondAttribute="bottom" constant="8" id="XMK-yi-imb"/>
+                                                        <constraint firstItem="1OX-OD-bF4" firstAttribute="top" secondItem="Hcm-AJ-vUL" secondAttribute="top" constant="16" id="eTH-Bm-Oil"/>
+                                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="yfs-4W-aoL" secondAttribute="trailing" constant="16" id="fm4-t2-ZvC"/>
+                                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="yfs-4W-aoL" secondAttribute="bottom" constant="16" id="prH-Ar-gU2"/>
+                                                        <constraint firstItem="1OX-OD-bF4" firstAttribute="leading" secondItem="Hcm-AJ-vUL" secondAttribute="leading" constant="16" id="sXc-js-kMf"/>
+                                                        <constraint firstItem="o0G-ra-gFu" firstAttribute="leading" secondItem="Hcm-AJ-vUL" secondAttribute="leading" constant="16" id="zQD-m2-fxa"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Hcm-AJ-vUL" firstAttribute="top" secondItem="zzh-hB-9vv" secondAttribute="top" id="3a2-uu-7sO"/>
+                                                <constraint firstItem="Hcm-AJ-vUL" firstAttribute="leading" secondItem="zzh-hB-9vv" secondAttribute="leading" id="bcH-1b-Upq"/>
+                                                <constraint firstAttribute="trailing" secondItem="Hcm-AJ-vUL" secondAttribute="trailing" id="dgp-vR-pdh"/>
+                                                <constraint firstItem="Hcm-AJ-vUL" firstAttribute="bottom" secondItem="zzh-hB-9vv" secondAttribute="bottom" id="qNr-T1-u5a"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="bodyLabel" destination="yfs-4W-aoL" id="TW5-LP-rc7"/>
+                                            <outlet property="headlineLabel" destination="1OX-OD-bF4" id="Pe2-Sr-lnA"/>
+                                            <outlet property="subtitleLabel" destination="o0G-ra-gFu" id="wWe-LV-1uI"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

@@ -24,7 +24,6 @@ class DetailsViewController: UIViewController {
         
         guard let offerDetail = offerDetail else { fatalError("Please pass in a valid Detail object") }
         title = offerDetail.name
-        layoutDetails(theoffer: offerDetail)
     }
 }
 
