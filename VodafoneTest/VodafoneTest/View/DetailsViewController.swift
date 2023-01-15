@@ -11,28 +11,20 @@ class DetailsViewController: UIViewController {
     
     private var offerDetail: Detail?
     
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var subtitleLabel: UILabel!
-    @IBOutlet weak var bodyLabel: UILabel!
+    @IBOutlet weak var tblDetails: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tblDetails.delegate = self
+        tblDetails.dataSource = self
+        
+        tblDetails.rowHeight = UITableView.automaticDimension
+        tblDetails.estimatedRowHeight = 200
+        
         guard let offerDetail = offerDetail else { fatalError("Please pass in a valid Detail object") }
         title = offerDetail.name
         layoutDetails(theoffer: offerDetail)
-    }
-    
-    func layoutDetails(theoffer: Detail) {
-        
-        titleLabel.text = theoffer.name
-        titleLabel.font = UIFont.systemFont(ofSize: 24, weight: .bold)
-        
-        subtitleLabel.text = theoffer.shortDescription
-        subtitleLabel.font = UIFont.systemFont(ofSize: 16)
-        
-        bodyLabel.text = theoffer.description
-        bodyLabel.font = UIFont.systemFont(ofSize: 12, weight: .light)
     }
 }
 
@@ -45,4 +37,16 @@ extension DetailsViewController {
 
       return vc
     }
+}
+
+extension DetailsViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        <#code#>
+    }
+    
+    
 }
