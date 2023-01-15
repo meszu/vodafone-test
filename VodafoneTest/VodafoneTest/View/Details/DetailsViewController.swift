@@ -9,8 +9,8 @@ import UIKit
 
 class DetailsViewController: UIViewController {
     
-    private var offerDetail: Detail?
-    private var receivedOffer: Offer?
+    var offerDetail: Detail = Detail(id: "0", name: "Sample", shortDescription: "Sample", description: "Sample")
+    var receivedOffer: Offer?
     
     @IBOutlet weak var tblDetails: UITableView!
     
@@ -23,7 +23,6 @@ class DetailsViewController: UIViewController {
         tblDetails.rowHeight = UITableView.automaticDimension
         tblDetails.estimatedRowHeight = 200
         
-        guard let offerDetail = offerDetail else { fatalError("Please pass in a valid Detail object") }
         title = offerDetail.name
     }
 }
@@ -46,7 +45,11 @@ extension DetailsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return DetailCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: DetailCell.reuseIdentifier, for: indexPath) as! DetailCell
+    
+        cell.configureWith(offerDetail)
+
+        return cell
     }
     
     
