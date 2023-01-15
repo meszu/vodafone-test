@@ -32,6 +32,8 @@ class DetailsViewController: UIViewController {
     }
 }
 
+// MARK: - Instantiate method
+
 extension DetailsViewController {
     static func instantiate(offerDetail: Detail, receivedOffer: Offer) -> DetailsViewController {
       guard let vc = UIStoryboard(name: "Main", bundle: nil)
@@ -43,6 +45,8 @@ extension DetailsViewController {
       return vc
     }
 }
+
+// MARK: - UITableView Delegate & Data Source
 
 extension DetailsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -66,7 +70,6 @@ extension DetailsViewController {
             switch result {
             case .success(let response):
                 do {
-//                    print(try response.mapJSON())
                     let details = try response.map(DetailRecord.self).record
                     if details.id == self.receivedOffer?.id {
                         self.offerDetail = Detail(
@@ -95,7 +98,11 @@ extension DetailsViewController {
 
       present(alert, animated: true, completion: nil)
     }
-    
+}
+
+// MARK: - Pull to Refresh
+
+extension DetailsViewController {
     private func setupRefreshControl() {
         refreshControll.tintColor = UIColor(named: "cellBackground")
         refreshControll.addTarget(self, action: #selector(refreshContent), for: .valueChanged)
@@ -103,7 +110,6 @@ extension DetailsViewController {
     }
     
     @objc func refreshContent() {
-//        setupSkeletons()
         reset()
         fetchData()
         tblDetails.refreshControl?.endRefreshing()
