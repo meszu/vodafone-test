@@ -20,6 +20,7 @@ class DetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupRefreshControl()
         
         tblDetails.delegate = self
         tblDetails.dataSource = self

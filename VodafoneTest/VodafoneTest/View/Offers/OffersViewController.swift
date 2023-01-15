@@ -152,7 +152,7 @@ extension OffersViewController: UITableViewDelegate, UITableViewDataSource {
 
         return cell
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         fetchDetailData()
         
@@ -190,16 +190,29 @@ extension OffersViewController: UITableViewDelegate, UITableViewDataSource {
         sectionHeaderLabelView.addSubview(sectionHeaderLabel)
         
         sectionHeaderLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            sectionHeaderLabel.centerYAnchor.constraint(equalTo: sectionHeaderLabelView.centerYAnchor, constant: -8),
-            sectionHeaderLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: sectionHeaderLabelView.leadingAnchor, multiplier: 2)
-        ])
+        
+        if section == 0 {
+            NSLayoutConstraint.activate([
+                sectionHeaderLabel.centerYAnchor.constraint(equalTo: sectionHeaderLabelView.centerYAnchor),
+                sectionHeaderLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: sectionHeaderLabelView.leadingAnchor, multiplier: 2)
+            ])
+        } else {
+            NSLayoutConstraint.activate([
+                sectionHeaderLabel.centerYAnchor.constraint(equalTo: sectionHeaderLabelView.centerYAnchor, constant: -10),
+                sectionHeaderLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: sectionHeaderLabelView.leadingAnchor, multiplier: 2)
+            ])
+        }
+        
         
         return sectionHeaderLabelView
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 72
+        if section == 0 {
+            return 77
+        } else {
+            return 61
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
