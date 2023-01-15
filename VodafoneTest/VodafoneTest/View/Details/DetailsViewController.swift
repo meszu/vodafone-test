@@ -10,6 +10,7 @@ import UIKit
 class DetailsViewController: UIViewController {
     
     private var offerDetail: Detail?
+    private var receivedOffer: Offer?
     
     @IBOutlet weak var tblDetails: UITableView!
     
@@ -33,6 +34,7 @@ extension DetailsViewController {
         .instantiateViewController(withIdentifier: "DetailsViewController") as? DetailsViewController else { fatalError("Unexpectedly failed getting DetailViewController from Storyboard") }
 
         vc.offerDetail = offerDetail
+        vc.receivedOffer = receivedOffer
 
       return vc
     }
@@ -44,7 +46,7 @@ extension DetailsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        return DetailCell()
     }
     
     

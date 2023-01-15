@@ -104,6 +104,28 @@ extension OffersViewController {
         }
     }
     
+    private func fetchDetailData() {
+        detailProvider.request(.details) { [self] result in
+            switch result {
+            case .success(let response):
+                do {
+                    let details = try response.map(DetailRecord.self).record
+                    
+                    detailsToPresent = Detail(
+                        id: details.id,
+                        name: details.name,
+                        shortDescription: details.shortDescription,
+                        description: details.description)
+                } catch {
+                    self.presentError(title: "Decoding Error", message: "Something went wrong. Try again later.")
+                }
+            case .failure(let error):
+                print("Failed to download the offers list with error: \(error.localizedDescription)")
+                self.presentError(title: "Download Error", message: "Failed to download the offer list.")
+            }
+        }
+    }
+    
     func presentError(title: String, message: String) {
       let alert = UIAlertController(title: title, message: message,
                                     preferredStyle: .alert)
@@ -132,7 +154,22 @@ extension OffersViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailVC = DetailsViewController.instantiate(offerDetail: Detail(id: 1, name: "Bestest 1 GB", shortDescription: "legjobb egy giga amit csak kaphatsz", description: "Remek ár érték arányban kaphatod meg ezt a csúcsszuper egy gigabájtnyi adatot amit arra használsz fel amire csak akarsz"))
+        fetchDetailData()
+        
+        guard let detailsToPresent = detailsToPresent else { return }
+        
+        let currentOffer = sections[indexPath.section].cells[indexPath.row]
+        
+        var detailToSend: Detail
+        
+        if currentOffer.id == detailsToPresent.id {
+            detailToSend = Detail(id: detailsToPresent.id, name: detailsToPresent.name, shortDescription: detailsToPresent.shortDescription, description: detailsToPresent.description)
+        } else {
+            detailToSend = Detail(id: "", name: "", shortDescription: "", description: "")
+        }
+        
+        let detailVC = DetailsViewController.instantiate(offerDetail: detailToSend, receivedOffer: currentOffer)
+
         navigationController?.show(detailVC, sender: self)
     }
     
