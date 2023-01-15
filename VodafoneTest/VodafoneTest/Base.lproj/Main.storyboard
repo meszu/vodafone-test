@@ -187,7 +187,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="i9k-s3-37J"/>
                     <connections>
-                        <outlet property="tblDetail" destination="hjy-9Q-HD7" id="CWs-XJ-hOs"/>
+                        <outlet property="tblDetails" destination="hjy-9Q-HD7" id="J9g-Gu-dOQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MqI-5y-fzF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
