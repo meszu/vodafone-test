@@ -11,6 +11,7 @@ import UIKit
 class DetailsViewController: UIViewController {
     
     private let provider = MoyaProvider<DetailsService>()
+    var refreshControll = UIRefreshControl()
     
     var offerDetail: Detail = Detail(id: "0", name: "Sample", shortDescription: "Sample", description: "Sample")
     var receivedOffer: Offer?
@@ -93,5 +94,22 @@ extension DetailsViewController {
 
       present(alert, animated: true, completion: nil)
     }
-
+    
+    private func setupRefreshControl() {
+        refreshControll.tintColor = UIColor(named: "cellBackground")
+        refreshControll.addTarget(self, action: #selector(refreshContent), for: .valueChanged)
+        tblDetails.refreshControl = refreshControll
+    }
+    
+    @objc func refreshContent() {
+//        setupSkeletons()
+        reset()
+        fetchData()
+        tblDetails.refreshControl?.endRefreshing()
+        tblDetails.reloadData()
+    }
+    
+    @objc func reset() {
+        self.offerDetail = Detail(id: "", name: "", shortDescription: "", description: "")
+    }
 }
