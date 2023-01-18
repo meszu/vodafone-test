@@ -35,7 +35,6 @@ class DetailViewModel {
                         detailArray.append(detailToSend)
                     self.offerDetail = detailToSend
 
-                    print(detailArray)
                     self.items.onNext(detailArray)
                 } catch {
                     print("Failed to parse the detail data with error: \(error.localizedDescription)")

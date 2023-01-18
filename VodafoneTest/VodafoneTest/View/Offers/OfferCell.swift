@@ -17,7 +17,7 @@ class OfferCell: UITableViewCell {
     
     public func configureWith(_ offer: Offer) {
         offerTitle.text = offer.name
-        offerTitle.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        offerTitle.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         
         offerDescription.text = offer.shortDescription
         redArrowImage.image = UIImage(named: "redArrow")

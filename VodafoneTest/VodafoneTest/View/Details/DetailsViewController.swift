@@ -7,28 +7,48 @@
 
 import Moya
 import UIKit
+import RxSwift
+import RxCocoa
 
 class DetailsViewController: UIViewController {
     
+    private let bag = DisposeBag()
+    private let viewModel = DetailViewModel()
+        
     private let provider = MoyaProvider<DetailsService>()
     var refreshControll = UIRefreshControl()
     
-    var offerDetail: Detail = Detail(id: "0", name: "Sample", shortDescription: "Sample", description: "Sample")
     var receivedOffer: Offer?
+
+    var offerDetail: Detail = Detail(id: "0", name: "Sample", shortDescription: "Sample", description: "Sample")
     
     @IBOutlet weak var tblDetails: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = receivedOffer?.name
         setupRefreshControl()
+
+        tblDetails.rx.setDelegate(self).disposed(by: bag)
         
-        tblDetails.delegate = self
-        tblDetails.dataSource = self
+        bindTableView()
         
         tblDetails.rowHeight = UITableView.automaticDimension
         tblDetails.estimatedRowHeight = 200
         
-        title = offerDetail.name
+    }
+    
+    private func bindTableView() {
+        
+        viewModel.items.bind(to: tblDetails.rx.items(cellIdentifier: "DetailCell", cellType: DetailCell.self)) { (row,item,cell) in
+            if item.id == self.receivedOffer?.id {
+                cell.configureWith(item)
+            } else {
+                cell.configureWith(Detail(id: "", name: "", shortDescription: "", description: ""))
+            }
+        }.disposed(by: bag)
+        
+        viewModel.fetchData()
     }
 }
 
@@ -46,21 +66,9 @@ extension DetailsViewController {
     }
 }
 
-// MARK: - UITableView Delegate & Data Source
+// MARK: - UITableView Delegate
 
-extension DetailsViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: DetailCell.reuseIdentifier, for: indexPath) as! DetailCell
-    
-        cell.configureWith(offerDetail)
-
-        return cell
-    }
-}
+extension DetailsViewController: UITableViewDelegate {}
 
 // MARK: Network and Refresh Control
 
@@ -110,10 +118,8 @@ extension DetailsViewController {
     }
     
     @objc func refreshContent() {
-        reset()
-        fetchData()
+        viewModel.fetchData()
         tblDetails.refreshControl?.endRefreshing()
-        tblDetails.reloadData()
     }
     
     @objc func reset() {
