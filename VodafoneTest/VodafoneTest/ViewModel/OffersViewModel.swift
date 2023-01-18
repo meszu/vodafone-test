@@ -10,6 +10,8 @@ import RxCocoa
 import RxSwift
 
 public class OffersViewModel {
+    var delegate: OffersViewModelDelegate?
+
     let provider = MoyaProvider<OffersService>()
     let detailProvider = MoyaProvider<DetailsService>()
     
@@ -60,9 +62,11 @@ public class OffersViewModel {
                     }
                     self._sectionModels.onNext(self.newSections)
                 } catch {
+                    self.delegate?.showError("Error", "Error while parsing the data. Please try again later.")
                     print("error while mapping response")
                 }
             case .failure(let error):
+                self.delegate?.showError("Error", "Error while downloading data. Please try again later.")
                 print("Failed to download the offers list with error: \(error.localizedDescription)")
             }
         }
@@ -83,11 +87,11 @@ public class OffersViewModel {
                     
                     self._detailModels.onNext(self.detailsToPresent)
                 } catch {
-//                    self.presentError(with: "Something went wrong. Try again later.")
+                    self.delegate?.showError("Error", "Error while parsing the data. Please try again later.")
                 }
             case .failure(let error):
+                self.delegate?.showError("Error", "Error while downloading data. Please try again later.")
                 print("Failed to download the offers list with error: \(error.localizedDescription)")
-//                self.presentError(with: "Failed to download the offer list.")
             }
         }
     }
