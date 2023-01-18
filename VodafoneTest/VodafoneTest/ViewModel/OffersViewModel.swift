@@ -11,14 +11,22 @@ import RxSwift
 
 public class OffersViewModel {
     let provider = MoyaProvider<OffersService>()
+    let detailProvider = MoyaProvider<DetailsService>()
     
     var sectionHeaders: [String] = []
     var newSections: [OfferSectionModel] = []
+    var detailsToPresent: Detail = Detail(id: "", name: "", shortDescription: "", description: "")
     
     private var _sectionModels: BehaviorSubject<[OfferSectionModel]> = BehaviorSubject(value: [])
        
     var sectionModels: SharedSequence<DriverSharingStrategy, [OfferSectionModel]> {
         return _sectionModels.asDriver(onErrorJustReturn: [])
+    }
+    
+    private var _detailModels: BehaviorSubject<Detail> = BehaviorSubject(value: Detail(id: "", name: "", shortDescription: "", description: ""))
+       
+    var detailModels: SharedSequence<DriverSharingStrategy, Detail> {
+        return _detailModels.asDriver(onErrorJustReturn: Detail(id: "", name: "", shortDescription: "", description: ""))
     }
 
     func fetchData() {
@@ -56,6 +64,30 @@ public class OffersViewModel {
                 }
             case .failure(let error):
                 print("Failed to download the offers list with error: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    func fetchDetailData() {
+        detailProvider.request(.details) { [self] result in
+            switch result {
+            case .success(let response):
+                do {
+                    let detail = try response.map(DetailRecord.self).record
+                    
+                    detailsToPresent = Detail(
+                        id: detail.id,
+                        name: detail.name,
+                        shortDescription: detail.shortDescription,
+                        description: detail.description)
+                    
+                    self._detailModels.onNext(self.detailsToPresent)
+                } catch {
+//                    self.presentError(with: "Something went wrong. Try again later.")
+                }
+            case .failure(let error):
+                print("Failed to download the offers list with error: \(error.localizedDescription)")
+//                self.presentError(with: "Failed to download the offer list.")
             }
         }
     }
