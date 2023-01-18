@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -300,7 +300,7 @@
 				};
 			};
 			buildConfigurationList = 146D9EE02968B87C00AF574D /* Build configuration list for PBXProject "VodafoneTest" */;
-			compatibilityVersion = "Xcode 13.0";
+			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (

@@ -17,9 +17,10 @@ class OfferCell: UITableViewCell {
     
     public func configureWith(_ offer: Offer) {
         offerTitle.text = offer.name
-        offerTitle.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        offerTitle.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         
         offerDescription.text = offer.shortDescription
+        offerDescription.font = UIFont.systemFont(ofSize: 12)
         redArrowImage.image = UIImage(named: "redArrow")
         
         cardView.layer.cornerRadius = 10
