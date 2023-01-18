@@ -7,28 +7,32 @@
 
 import Moya
 import UIKit
+import RxSwift
+import RxCocoa
+import RxDataSources
 
 class OffersViewController: UIViewController {
     @IBOutlet weak var tblOffers: UITableView!
     
-    let provider = MoyaProvider<OffersService>()
+    var viewModel: OffersViewModel!
+    private var bag = DisposeBag()
+    
+    var dataSource: RxTableViewSectionedReloadDataSource<OfferSectionModel>!
+    
+    var detailsToPresent: Detail?
+    
     let detailProvider = MoyaProvider<DetailsService>()
     
     var refreshControl = UIRefreshControl()
-    
-    var detailsToPresent: Detail?
-
-    var sections: [Section] = []
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        fetchData()
-        fetchDetailData()
+        configureViewModel()
+        configureSectionModel()
+        configureTableView()
         setupRefreshControl()
-        
-        tblOffers.delegate = self
-        tblOffers.dataSource = self
+        viewModel.delegate = self
         
         tblOffers.rowHeight = UITableView.automaticDimension
         tblOffers.estimatedRowHeight = 140
@@ -40,6 +44,10 @@ class OffersViewController: UIViewController {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
         navigationItem.backBarButtonItem?.tintColor = UIColor(named: "backButtonColor")
     }
+    
+    private func configureViewModel() {
+       viewModel = OffersViewModel()
+    }
 }
 
 // MARK: - Pull to Refresh
@@ -50,147 +58,91 @@ extension OffersViewController {
         refreshControl.addTarget(self, action: #selector(refreshContent), for: .valueChanged)
         tblOffers.refreshControl = refreshControl
     }
-    
+
     @objc func refreshContent() {
-        reset()
-        tblOffers.reloadData()
-        fetchData()
+        viewModel.fetchData()
         tblOffers.refreshControl?.endRefreshing()
-    }
-    
-    @objc func reset() {
-        sections = []
     }
 }
 
 // MARK: - Networking
-
 extension OffersViewController {
-    private func fetchData() {
-        provider.request(.offers) { [weak self] result in
-            guard let self = self else { return }
-            
-            switch result {
-            case .success(let response):
-                do {
-                    /* Parse the JSON file, exclude offers where "id" or "rank" parameter is nil. */
-                    let allOffers = try response.map(Offers.self).record.offers.filter { $0.rank != nil && $0.rank != 0 && $0.id != nil && $0.id != "" }
+    static func dataSource() -> RxTableViewSectionedReloadDataSource<OfferSectionModel> {
+        return RxTableViewSectionedReloadDataSource<OfferSectionModel>(
+            configureCell: { dataSource, tableView, indexPath, _ in
+                switch dataSource[indexPath] {
+                case let .offerItem(offer: offer):
+                    let cell: OfferCell = tableView.dequeueReusableCell(withIdentifier: OfferCell.reuseIdentifier, for: indexPath) as? OfferCell ?? OfferCell()
+                    cell.configureWith(offer)
                     
-                    /* Filter all offers based on wheter they are special offers or normal offers. */
-                    let specOffs = allOffers.filter { $0.isSpecial }
-                    let normOffs = allOffers.filter { !$0.isSpecial }
-                    
-                    /* If special offers array is not empty, create a Section with a title of "Special Offers", and populate the cells with the
-                       special offers array.
-                     */
-                    if !specOffs.isEmpty {
-                        self.sections.append(Section(title: "Special Offers", cells: specOffs))
-                    }
-                    
-                    /* If normal offers array is not empty, create a Section with a title of "Offers", and populate the cells with the
-                       special offers array.
-                     */
-                    if !normOffs.isEmpty {
-                        self.sections.append(Section(title: "Offers", cells: normOffs))
-                    }
-                    
-                    self.tblOffers.reloadData()
-                } catch {
-                    self.presentError(title: "Uh Oh", message: "Something went wrong while parsing the data. Try again later.")
+                    return cell
                 }
-            case .failure:
-                self.presentError(title: "Sorry", message: "Failed to download the offer list.")
-            }
-        }
+            })
     }
     
-    private func fetchDetailData() {
-        detailProvider.request(.details) { [self] result in
-            switch result {
-            case .success(let response):
-                do {
-                    let details = try response.map(DetailRecord.self).record
+    private func configureSectionModel() {
+        viewModel.fetchData()
+        
+        let dataSource = OffersViewController.dataSource()
+        
+        viewModel
+            .sectionModels
+            .drive(tblOffers.rx.items(dataSource: dataSource))
+            .disposed(by: bag)
+        
+        tblOffers.rx.modelSelected(OfferSectionItem.self)
+            .asDriver()
+            .drive(onNext: { [weak self] model in
+                switch model {
+                case .offerItem(offer: let offer):
+                    self!.viewModel.fetchDetailData()
+                    let detailToSend = self!.viewModel.detailsToPresent
+                    let detailVC = DetailsViewController.instantiate(offerDetail: detailToSend, receivedOffer: offer)
                     
-                    detailsToPresent = Detail(
-                        id: details.id,
-                        name: details.name,
-                        shortDescription: details.shortDescription,
-                        description: details.description)
-                } catch {
-                    self.presentError(title: "Decoding Error", message: "Something went wrong. Try again later.")
+                    self?.navigationController?.pushViewController(detailVC, animated: true)
                 }
-            case .failure(let error):
-                print("Failed to download the offers list with error: \(error.localizedDescription)")
-                self.presentError(title: "Download Error", message: "Failed to download the offer list.")
-            }
-        }
+            }).disposed(by: bag)
+        
+        tblOffers.refreshControl?.rx.controlEvent(.valueChanged)
+            .subscribe(onNext: { [weak self] in
+                self?.viewModel.fetchData()
+            })
+            .disposed(by: bag)
     }
     
-    func presentError(title: String, message: String) {
-      let alert = UIAlertController(title: title, message: message,
-                                    preferredStyle: .alert)
-      alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-
-      present(alert, animated: true, completion: nil)
+    private func configureTableView() {
+        tblOffers
+            .rx.setDelegate(self)
+            .disposed(by: bag)
+    }
+    
+    private func presentAlert(_ title: String, message: String) {
+        let alert = UIAlertController(title: "\(title) Selected", message: "It cost you \(message)", preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alert.addAction(okAction)
+        
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
-// MARK: - UITableView Delegate & Data Source
+// MARK: - UITableView Delegate methods
 
-extension OffersViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sections[section].cells.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: OfferCell.reuseIdentifier, for: indexPath) as! OfferCell
-
-        let currentOffer = sections[indexPath.section].cells[indexPath.row]
-        
-        cell.configureWith(currentOffer)
-
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    //    fetchDetailData()
-        
-        guard let detailsToPresent = detailsToPresent else { return }
-        
-        let currentOffer = sections[indexPath.section].cells[indexPath.row]
-        
-        var detailToSend: Detail
-        
-        if currentOffer.id == detailsToPresent.id {
-            detailToSend = Detail(id: detailsToPresent.id, name: detailsToPresent.name, shortDescription: detailsToPresent.shortDescription, description: detailsToPresent.description)
-        } else {
-            detailToSend = Detail(id: "", name: "", shortDescription: "", description: "")
-        }
-        
-        let detailVC = DetailsViewController.instantiate(offerDetail: detailToSend, receivedOffer: currentOffer)
-
-        navigationController?.show(detailVC, sender: self)
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return sections.count
-    }
-    
+extension OffersViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let sectionHeaderLabelView = UIView()
         sectionHeaderLabelView.backgroundColor = UIColor(named: "cellBackground")
-        sectionHeaderLabelView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: 40)
+        sectionHeaderLabelView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: 72)
         
         let sectionHeaderLabel = UILabel()
-        sectionHeaderLabel.text = sections[section].title
+        sectionHeaderLabel.text = viewModel.sectionHeaders[section]
         sectionHeaderLabel.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         if section == 0 {
-            sectionHeaderLabel.frame = CGRect(x: 16, y: 16, width: 250, height: 35)
+            sectionHeaderLabel.frame = CGRect(x: 16, y: 20, width: 250, height: 35)
         } else {
             sectionHeaderLabel.frame = CGRect(x: 16, y: 8, width: 250, height: 35)
         }
-
+        
         sectionHeaderLabelView.addSubview(sectionHeaderLabel)
         
         return sectionHeaderLabelView
@@ -200,15 +152,28 @@ extension OffersViewController: UITableViewDelegate, UITableViewDataSource {
         if section == 0 {
             return 77
         } else {
-            return 61
+            return 65
         }
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return .leastNormalMagnitude
     }
-    
+
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView()
+    }
+}
+
+// MARK: - Error Alert
+
+extension OffersViewController: OffersViewModelDelegate {
+    func showError(_ title: String, _ message: String) {
+        DispatchQueue.main.async {
+            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default))
+            
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
 }

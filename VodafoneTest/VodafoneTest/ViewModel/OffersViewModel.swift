@@ -38,28 +38,39 @@ public class OffersViewModel {
             switch result {
             case .success(let response):
                 do {
+                    /* Parse the JSON file, exclude offers where "id" or "rank" parameter is nil. */
                     let responseData = try response.map(Offers.self).record.offers.filter { $0.rank != nil && $0.id != nil }
                     
                     self.newSections = []
                     self.sectionHeaders = []
+                    
+                    /* Filter all offers based on wheter they are special offers or normal offers. */
                     let normalOffers = responseData.filter { !$0.isSpecial }
                     let specialOffers = responseData.filter { $0.isSpecial }
                     
+                    /* Sort offers based on their rank, .sorted() works here, because Offer struct conforms to
+                       Comparable, custom function sort them by rank by default.
+                     */
                     let sortedNormalOffers = normalOffers.sorted()
                     let sortedSpecialOffers = specialOffers.sorted()
                     
+                    /* Convert offers array into an array of OfferSectionItems, this way we can use RxDataSource with multiple sections.
+                     */
                     let createSpecialOfferItems = sortedSpecialOffers.map { OfferSectionItem.offerItem(offer: $0) }
                     let createNormalOfferItems = sortedNormalOffers.map { OfferSectionItem.offerItem(offer: $0) }
-
+                    
+                    /* Check if one of the sections is empty, because if one section does not contain any offers, the section should not even appear.
+                     */
                     if !specialOffers.isEmpty {
                         self.sectionHeaders.append("Special Offers")
                         self.newSections.append(.specialSection(title: "Special Offers", items: createSpecialOfferItems))
                     }
                     if !normalOffers.isEmpty {
                         self.sectionHeaders.append("Offers")
-
                         self.newSections.append(.normalSection(title: "Offers", items: createNormalOfferItems))
                     }
+                    
+                    
                     self._sectionModels.onNext(self.newSections)
                 } catch {
                     self.delegate?.showError("Error", "Error while parsing the data. Please try again later.")
