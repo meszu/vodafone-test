@@ -22,12 +22,26 @@
 		14B7F3262977F2400048B5C5 /* OffersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B7F3252977F2400048B5C5 /* OffersViewModel.swift */; };
 		14B7F3292977F4740048B5C5 /* OffersViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B7F3282977F4740048B5C5 /* OffersViewModelDelegate.swift */; };
 		14B7F32B2977FA3E0048B5C5 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B7F32A2977FA3E0048B5C5 /* DetailViewModel.swift */; };
+		14B7F33329787EB10048B5C5 /* OffersViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B7F33229787EB10048B5C5 /* OffersViewModelTests.swift */; };
+		14B7F3402978A9260048B5C5 /* DetailsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B7F33F2978A9260048B5C5 /* DetailsViewModelTests.swift */; };
+		14B7F3452978AC3D0048B5C5 /* detailInput.json in Resources */ = {isa = PBXBuildFile; fileRef = 14B7F3412978A9DE0048B5C5 /* detailInput.json */; };
+		14B7F3462978AC420048B5C5 /* input.json in Resources */ = {isa = PBXBuildFile; fileRef = 14B7F33A2978980C0048B5C5 /* input.json */; };
 		14BA7F9B29749DAF0058057B /* DetailsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BA7F9A29749DAF0058057B /* DetailsService.swift */; };
 		14DDC4082974722500C8E69B /* DetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DDC4072974722500C8E69B /* DetailCell.swift */; };
 		14E57A3A296D896700F1216B /* OfferCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E57A39296D896700F1216B /* OfferCell.swift */; };
-		14E57A3C296D8B3200F1216B /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E57A3B296D8B3200F1216B /* Section.swift */; };
 		4FADA0B7701C2EB1E2A68C0F /* Pods_VodafoneTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0CA29CBF3365E7EEC35259E /* Pods_VodafoneTest.framework */; };
+		D1616EE48615E18065DAB17F /* Pods_VodafoneTest_VodafoneTestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F0B2BFBB1662677ED23A5AB /* Pods_VodafoneTest_VodafoneTestTests.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		14B7F33429787EB10048B5C5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 146D9EDD2968B87C00AF574D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 146D9EE42968B87C00AF574D;
+			remoteInfo = VodafoneTest;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		14022A40297063EF00F3E58C /* OffersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffersService.swift; sourceTree = "<group>"; };
@@ -47,11 +61,18 @@
 		14B7F3252977F2400048B5C5 /* OffersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffersViewModel.swift; sourceTree = "<group>"; };
 		14B7F3282977F4740048B5C5 /* OffersViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffersViewModelDelegate.swift; sourceTree = "<group>"; };
 		14B7F32A2977FA3E0048B5C5 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		14B7F33029787EB10048B5C5 /* VodafoneTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VodafoneTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		14B7F33229787EB10048B5C5 /* OffersViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffersViewModelTests.swift; sourceTree = "<group>"; };
+		14B7F33A2978980C0048B5C5 /* input.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = input.json; sourceTree = "<group>"; };
+		14B7F33F2978A9260048B5C5 /* DetailsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModelTests.swift; sourceTree = "<group>"; };
+		14B7F3412978A9DE0048B5C5 /* detailInput.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = detailInput.json; sourceTree = "<group>"; };
 		14BA7F9A29749DAF0058057B /* DetailsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsService.swift; sourceTree = "<group>"; };
 		14DDC4072974722500C8E69B /* DetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCell.swift; sourceTree = "<group>"; };
 		14E57A39296D896700F1216B /* OfferCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferCell.swift; sourceTree = "<group>"; };
-		14E57A3B296D8B3200F1216B /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
+		6F0B2BFBB1662677ED23A5AB /* Pods_VodafoneTest_VodafoneTestTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VodafoneTest_VodafoneTestTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		894930A25F3EE61C37BE1499 /* Pods-VodafoneTest-VodafoneTestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VodafoneTest-VodafoneTestTests.release.xcconfig"; path = "Target Support Files/Pods-VodafoneTest-VodafoneTestTests/Pods-VodafoneTest-VodafoneTestTests.release.xcconfig"; sourceTree = "<group>"; };
 		8FD3D1EE386DCC8F56A6F587 /* Pods-VodafoneTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VodafoneTest.debug.xcconfig"; path = "Target Support Files/Pods-VodafoneTest/Pods-VodafoneTest.debug.xcconfig"; sourceTree = "<group>"; };
+		AA2D047AF5E2E65638AFE432 /* Pods-VodafoneTest-VodafoneTestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VodafoneTest-VodafoneTestTests.debug.xcconfig"; path = "Target Support Files/Pods-VodafoneTest-VodafoneTestTests/Pods-VodafoneTest-VodafoneTestTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C0CA29CBF3365E7EEC35259E /* Pods_VodafoneTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VodafoneTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D89388B883355C3940D831D0 /* Pods-VodafoneTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VodafoneTest.release.xcconfig"; path = "Target Support Files/Pods-VodafoneTest/Pods-VodafoneTest.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -62,6 +83,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FADA0B7701C2EB1E2A68C0F /* Pods_VodafoneTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		14B7F32D29787EB10048B5C5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D1616EE48615E18065DAB17F /* Pods_VodafoneTest_VodafoneTestTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,7 +114,6 @@
 				143C4202296D775000B4B51A /* Offer.swift */,
 				143C4204296D777B00B4B51A /* Detail.swift */,
 				14B7F3232977F1C50048B5C5 /* OfferSectionModel.swift */,
-				14E57A3B296D8B3200F1216B /* Section.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -103,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				146D9EE72968B87C00AF574D /* VodafoneTest */,
+				14B7F33129787EB10048B5C5 /* VodafoneTestTests */,
 				146D9EE62968B87C00AF574D /* Products */,
 				7CC6685D4E6A882EFF77C40B /* Pods */,
 				24CC8E3551A2A6469907AB37 /* Frameworks */,
@@ -113,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				146D9EE52968B87C00AF574D /* VodafoneTest.app */,
+				14B7F33029787EB10048B5C5 /* VodafoneTestTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -120,16 +150,14 @@
 		146D9EE72968B87C00AF574D /* VodafoneTest */ = {
 			isa = PBXGroup;
 			children = (
-				146D9EE82968B87C00AF574D /* AppDelegate.swift */,
-				146D9EEA2968B87C00AF574D /* SceneDelegate.swift */,
+				14B7F33A2978980C0048B5C5 /* input.json */,
+				14B7F3412978A9DE0048B5C5 /* detailInput.json */,
+				146D9EF62968B87D00AF574D /* Info.plist */,
+				14B7F33929788ADA0048B5C5 /* Common */,
 				14B7F3272977F4550048B5C5 /* Protocols */,
 				14B7F3222977F10C0048B5C5 /* ViewModel */,
 				143C4208296D7E4400B4B51A /* View */,
 				143C4201296D774000B4B51A /* Model */,
-				146D9EEE2968B87C00AF574D /* Main.storyboard */,
-				146D9EF12968B87D00AF574D /* Assets.xcassets */,
-				146D9EF32968B87D00AF574D /* LaunchScreen.storyboard */,
-				146D9EF62968B87D00AF574D /* Info.plist */,
 			);
 			path = VodafoneTest;
 			sourceTree = "<group>";
@@ -149,6 +177,27 @@
 				14B7F3282977F4740048B5C5 /* OffersViewModelDelegate.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		14B7F33129787EB10048B5C5 /* VodafoneTestTests */ = {
+			isa = PBXGroup;
+			children = (
+				14B7F33229787EB10048B5C5 /* OffersViewModelTests.swift */,
+				14B7F33F2978A9260048B5C5 /* DetailsViewModelTests.swift */,
+			);
+			path = VodafoneTestTests;
+			sourceTree = "<group>";
+		};
+		14B7F33929788ADA0048B5C5 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				146D9EEA2968B87C00AF574D /* SceneDelegate.swift */,
+				146D9EE82968B87C00AF574D /* AppDelegate.swift */,
+				146D9EEE2968B87C00AF574D /* Main.storyboard */,
+				146D9EF12968B87D00AF574D /* Assets.xcassets */,
+				146D9EF32968B87D00AF574D /* LaunchScreen.storyboard */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		14DDC405297471F700C8E69B /* Offers */ = {
@@ -173,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				C0CA29CBF3365E7EEC35259E /* Pods_VodafoneTest.framework */,
+				6F0B2BFBB1662677ED23A5AB /* Pods_VodafoneTest_VodafoneTestTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -182,6 +232,8 @@
 			children = (
 				8FD3D1EE386DCC8F56A6F587 /* Pods-VodafoneTest.debug.xcconfig */,
 				D89388B883355C3940D831D0 /* Pods-VodafoneTest.release.xcconfig */,
+				AA2D047AF5E2E65638AFE432 /* Pods-VodafoneTest-VodafoneTestTests.debug.xcconfig */,
+				894930A25F3EE61C37BE1499 /* Pods-VodafoneTest-VodafoneTestTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -208,6 +260,26 @@
 			productReference = 146D9EE52968B87C00AF574D /* VodafoneTest.app */;
 			productType = "com.apple.product-type.application";
 		};
+		14B7F32F29787EB10048B5C5 /* VodafoneTestTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 14B7F33629787EB10048B5C5 /* Build configuration list for PBXNativeTarget "VodafoneTestTests" */;
+			buildPhases = (
+				92784FC812E35534C5E1E030 /* [CP] Check Pods Manifest.lock */,
+				14B7F32C29787EB10048B5C5 /* Sources */,
+				14B7F32D29787EB10048B5C5 /* Frameworks */,
+				14B7F32E29787EB10048B5C5 /* Resources */,
+				D333C643D6EE20DA3FD45217 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				14B7F33529787EB10048B5C5 /* PBXTargetDependency */,
+			);
+			name = VodafoneTestTests;
+			productName = VodafoneTestTests;
+			productReference = 14B7F33029787EB10048B5C5 /* VodafoneTestTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -220,6 +292,10 @@
 				TargetAttributes = {
 					146D9EE42968B87C00AF574D = {
 						CreatedOnToolsVersion = 14.0.1;
+					};
+					14B7F32F29787EB10048B5C5 = {
+						CreatedOnToolsVersion = 14.0.1;
+						TestTargetID = 146D9EE42968B87C00AF574D;
 					};
 				};
 			};
@@ -237,6 +313,7 @@
 			projectRoot = "";
 			targets = (
 				146D9EE42968B87C00AF574D /* VodafoneTest */,
+				14B7F32F29787EB10048B5C5 /* VodafoneTestTests */,
 			);
 		};
 /* End PBXProject section */
@@ -249,6 +326,15 @@
 				146D9EF52968B87D00AF574D /* LaunchScreen.storyboard in Resources */,
 				146D9EF22968B87D00AF574D /* Assets.xcassets in Resources */,
 				146D9EF02968B87C00AF574D /* Main.storyboard in Resources */,
+				14B7F3452978AC3D0048B5C5 /* detailInput.json in Resources */,
+				14B7F3462978AC420048B5C5 /* input.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		14B7F32E29787EB10048B5C5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +361,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		92784FC812E35534C5E1E030 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VodafoneTest-VodafoneTestTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D333C643D6EE20DA3FD45217 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VodafoneTest-VodafoneTestTests/Pods-VodafoneTest-VodafoneTestTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VodafoneTest-VodafoneTestTests/Pods-VodafoneTest-VodafoneTestTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VodafoneTest-VodafoneTestTests/Pods-VodafoneTest-VodafoneTestTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D578F46501B4A846BD124D2A /* [CP] Embed Pods Frameworks */ = {
@@ -304,7 +429,6 @@
 				14022A41297063EF00F3E58C /* OffersService.swift in Sources */,
 				14B7F3292977F4740048B5C5 /* OffersViewModelDelegate.swift in Sources */,
 				14DDC4082974722500C8E69B /* DetailCell.swift in Sources */,
-				14E57A3C296D8B3200F1216B /* Section.swift in Sources */,
 				14B7F3262977F2400048B5C5 /* OffersViewModel.swift in Sources */,
 				14E57A3A296D896700F1216B /* OfferCell.swift in Sources */,
 				146D9EED2968B87C00AF574D /* OffersViewController.swift in Sources */,
@@ -320,7 +444,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		14B7F32C29787EB10048B5C5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14B7F3402978A9260048B5C5 /* DetailsViewModelTests.swift in Sources */,
+				14B7F33329787EB10048B5C5 /* OffersViewModelTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		14B7F33529787EB10048B5C5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 146D9EE42968B87C00AF574D /* VodafoneTest */;
+			targetProxy = 14B7F33429787EB10048B5C5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		146D9EEE2968B87C00AF574D /* Main.storyboard */ = {
@@ -514,6 +655,46 @@
 			};
 			name = Release;
 		};
+		14B7F33729787EB10048B5C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA2D047AF5E2E65638AFE432 /* Pods-VodafoneTest-VodafoneTestTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DP687Z5DR7;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.meszkris.VodafoneTestTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VodafoneTest.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/VodafoneTest";
+			};
+			name = Debug;
+		};
+		14B7F33829787EB10048B5C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 894930A25F3EE61C37BE1499 /* Pods-VodafoneTest-VodafoneTestTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DP687Z5DR7;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.meszkris.VodafoneTestTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VodafoneTest.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/VodafoneTest";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -531,6 +712,15 @@
 			buildConfigurations = (
 				146D9EFA2968B87D00AF574D /* Debug */,
 				146D9EFB2968B87D00AF574D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		14B7F33629787EB10048B5C5 /* Build configuration list for PBXNativeTarget "VodafoneTestTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14B7F33729787EB10048B5C5 /* Debug */,
+				14B7F33829787EB10048B5C5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

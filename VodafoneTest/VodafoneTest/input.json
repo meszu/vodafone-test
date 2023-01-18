@@ -1,0 +1,46 @@
+{
+    "record": {
+        "offers": [
+            {
+                "id": "1",
+                "rank": 2,
+                "isSpecial": true,
+                "name": "One time 1 GB",
+                "shortDescription": "Let's choose between our data packages. This is a special offer just for you!"
+            },
+            {
+                "id": "2",
+                "rank": 1,
+                "isSpecial": true,
+                "name": "One time 300 MB",
+                "shortDescription": "Let's choose between our data packages."
+            },
+            {
+                "id": "3",
+                "rank": 4,
+                "isSpecial": false,
+                "name": "One time 500 MB",
+                "shortDescription": "Let's choose between our data packages."
+            },
+            {
+                "id": "4",
+                "rank": 3,
+                "isSpecial": true,
+                "name": "One time 100 MB",
+                "shortDescription": ""
+            },
+            {
+                "id": "5",
+                "rank": null,
+                "isSpecial": true,
+                "name": "One time 200 MB",
+                "shortDescription": "Let's choose between our data packages."
+            }
+        ]
+    },
+    "metadata": {
+        "id": "63bec2c4dfc68e59d57fab71",
+        "private": false,
+        "createdAt": "2023-01-11T14:08:04.489Z"
+    }
+}

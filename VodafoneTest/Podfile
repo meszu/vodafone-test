@@ -7,5 +7,7 @@ target 'VodafoneTest' do
   pod ‘RxSwift’
   pod ‘RxCocoa’
   pod 'RxDataSources', '~> 5.0'
+  
+  target :VodafoneTestTests
 
 end
