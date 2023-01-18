@@ -24,6 +24,7 @@ class OffersViewController: UIViewController {
         super.viewDidLoad()
         
         fetchData()
+        fetchDetailData()
         setupRefreshControl()
         
         tblOffers.delegate = self
@@ -51,7 +52,6 @@ extension OffersViewController {
     }
     
     @objc func refreshContent() {
-//        setupSkeletons()
         reset()
         tblOffers.reloadData()
         fetchData()
@@ -154,7 +154,7 @@ extension OffersViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        fetchDetailData()
+    //    fetchDetailData()
         
         guard let detailsToPresent = detailsToPresent else { return }
         
@@ -180,29 +180,18 @@ extension OffersViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let sectionHeaderLabelView = UIView()
         sectionHeaderLabelView.backgroundColor = UIColor(named: "cellBackground")
-        sectionHeaderLabelView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: 72)
+        sectionHeaderLabelView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: 40)
         
         let sectionHeaderLabel = UILabel()
         sectionHeaderLabel.text = sections[section].title
         sectionHeaderLabel.font = UIFont.systemFont(ofSize: 24, weight: .bold)
-        sectionHeaderLabel.frame = CGRect(x: 16, y: 0, width: 250, height: 35)
-        
-        sectionHeaderLabelView.addSubview(sectionHeaderLabel)
-        
-        sectionHeaderLabel.translatesAutoresizingMaskIntoConstraints = false
-        
         if section == 0 {
-            NSLayoutConstraint.activate([
-                sectionHeaderLabel.centerYAnchor.constraint(equalTo: sectionHeaderLabelView.centerYAnchor),
-                sectionHeaderLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: sectionHeaderLabelView.leadingAnchor, multiplier: 2)
-            ])
+            sectionHeaderLabel.frame = CGRect(x: 16, y: 16, width: 250, height: 35)
         } else {
-            NSLayoutConstraint.activate([
-                sectionHeaderLabel.centerYAnchor.constraint(equalTo: sectionHeaderLabelView.centerYAnchor, constant: -10),
-                sectionHeaderLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: sectionHeaderLabelView.leadingAnchor, multiplier: 2)
-            ])
+            sectionHeaderLabel.frame = CGRect(x: 16, y: 8, width: 250, height: 35)
         }
-        
+
+        sectionHeaderLabelView.addSubview(sectionHeaderLabel)
         
         return sectionHeaderLabelView
     }
