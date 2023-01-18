@@ -113,6 +113,7 @@
 			children = (
 				146D9EE82968B87C00AF574D /* AppDelegate.swift */,
 				146D9EEA2968B87C00AF574D /* SceneDelegate.swift */,
+				14B7F3222977F10C0048B5C5 /* ViewModel */,
 				143C4208296D7E4400B4B51A /* View */,
 				143C4201296D774000B4B51A /* Model */,
 				146D9EEE2968B87C00AF574D /* Main.storyboard */,
@@ -121,6 +122,13 @@
 				146D9EF62968B87D00AF574D /* Info.plist */,
 			);
 			path = VodafoneTest;
+			sourceTree = "<group>";
+		};
+		14B7F3222977F10C0048B5C5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		14DDC405297471F700C8E69B /* Offers */ = {
